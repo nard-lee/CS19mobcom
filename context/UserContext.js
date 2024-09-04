@@ -1,15 +1,17 @@
-import React, { Children, createContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
+import fetchUser from '../hooks/fetchUser';
 
-export const UserContext = createContext();
+export const UserContext = createContext(null);
 
-export default function UserContextProvider({children}){
+export default function UserProvider({children}){
 
-    const [user, setUser] = useState(null);
+    const { loading, data, error }  = fetchUser('user');
 
     return (
-        <UserContext.Provider value={{ user, setUser }}>
+        <UserContext.Provider value={{ loading, data, error }}>
             {children}
         </UserContext.Provider>
     );
 
 }
+

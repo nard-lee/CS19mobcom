@@ -1,36 +1,54 @@
 
+import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext'; // use curly brace to import
+//https://stackoverflow.com/questions/60277899/usecontext-returns-undefined
 
-import { View, Text, FlatList } from 'react-native';
+export default function ListUsers() {
 
-import { styled } from 'nativewind';
+    const user = useContext(UserContext);
 
-const StyledView = styled(View);
-const StyledText = styled(Text);
-
-export default function ListUsers(data) {
-
-
+    console.log(user.data)
 
     return (
+        
         <View>
-            <FlatList
-                data={data.data}
-                keyExtractor={(item) => item.user_id.toString()}
-                renderItem={({ item }) => (
-                    <StyledView className="flex flex-row h-screen ">
-                        <StyledView>
-                            <StyledText>{item.f_name}</StyledText>
-                        </StyledView>
-                        <StyledView>
-                            <StyledText>{item.l_name}</StyledText>
-                        </StyledView>
-                        <StyledView>
-                            <StyledText>{item.l_name}</StyledText>
-                        </StyledView>
-                    </StyledView>
-                )}
-            />
+            {user.loading && ( <Text>Loading...</Text> )}
+            {user.data && (
+                <FlatList
+                    data={user.data}
+                    keyExtractor={(item) => item.user_id.toString()}
+                    renderItem={({ item }) => (
+                        <View style={design.container}>
+                            <View style={design.textContent}>
+                                <Text>{item.f_name}</Text>
+                            </View>
+                            <View style={design.textContent}>
+                                <Text>{item.l_name}</Text>
+                            </View>
+                            <View style={design.textContent}>
+                                <Text>{item.email}</Text>
+                            </View>
+                        </View>
+                    )}
+                />
+            )}
         </View>
     );
 
 }
+
+const design = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 2
+    },
+    textContent: {
+        flex: 1,
+        textAlign: 'center',
+        borderWidth: 1,
+    }
+});
