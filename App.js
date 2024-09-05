@@ -1,18 +1,20 @@
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { View } from 'react-native';
+import BottomTabView from './components/tab/BottomTabView';
 
-import { View, Text, ScrollView } from 'react-native';
-import ListUsers from './components/listUsers';
-import UserProvider from './context/UserContext';
+
 
 export default function App() {
 
 	return (
-		<UserProvider>
-			<View>
-				<ScrollView>
-					<ListUsers />
-				</ScrollView>
-			</View>
-		</UserProvider>
+		<View style={{ flex: 1 }}>
+			<StatusBar
+				animated={true}
+				backgroundColor='#ccc'
+			/>
+			<BottomTabView />
+		</View>
 	);
 }
 
