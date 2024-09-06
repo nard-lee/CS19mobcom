@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import Feather from '@expo/vector-icons/Feather';
-
+import LandPage from '../LandPage';
 import Home from './Home';
 import Profile from './Profile';
 import Like from './Like';
@@ -15,19 +15,14 @@ const renderScene = SceneMap({
   user: Profile,
 });
 
-const Icon = ({ name, size, color }) => {
-  return (
-    <View style={styles.icon}>
-      <Text style={{ flex: 1 }}>
-        <Feather name={name} size={size} color={color} />
-      </Text>
-      <Text>{name}</Text>
-    </View>
-  )
-};
 
 export default function BottomTabView() {
 
+  const [showLandingPage, setShowLandingPage] = useState(true);
+
+  const handleCloseLandingPage = () => {
+    setShowLandingPage(false);
+  };
 
   const [index, setIndex] = useState(0);
   const [routes] = useState([
@@ -56,38 +51,44 @@ export default function BottomTabView() {
   };
 
   return (
-    <TabView
-      navigationState={{ index, routes }}
-      renderScene={renderScene}
-      renderTabBar={renderTabBar}
-      onIndexChange={setIndex}
-      style={styles.container}
-    />
-  );
+    <View style={{ flex: 1 }}>
+        <LandPage
+          visible={showLandingPage}
+          onClose={handleCloseLandingPage}
+        />
+        <TabView
+          navigationState={{ index, routes }}
+          renderScene={renderScene}
+          renderTabBar={renderTabBar}
+          onIndexChange={setIndex}
+          style={styles.container}
+        />
+      </View>
+      );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#fff",
-    flex: 1,
+      const styles = StyleSheet.create({
+        container: {
+        backgroundColor: "#fff",
+      flex: 1,
   },
-  tabBar: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    gap: 50,
-    alignItems: 'center',
-    backgroundColor: '#f2f2f2',
-    position: 'absolute',
-    bottom: 0,
-    zIndex: 1,
-    width: '100%',
-    borderTopWidth: 0.5,
-    borderBlockColor: 'rgba(0, 0, 0, 0.5)',
-    borderStyle: 'dotted',
+      tabBar: {
+        flexDirection: 'row',
+      justifyContent: 'center',
+      gap: 50,
+      alignItems: 'center',
+      backgroundColor: '#f2f2f2',
+      position: 'absolute',
+      bottom: 0,
+      zIndex: 1,
+      width: '100%',
+      borderTopWidth: 0.5,
+      borderBlockColor: 'rgba(0, 0, 0, 0.5)',
+      borderStyle: 'dotted',
   },
-  tabItem: {
-    paddingTop: 8,
-    paddingBottom: 5,
+      tabItem: {
+        paddingTop: 8,
+      paddingBottom: 5,
 
   }
 });

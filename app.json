@@ -7,9 +7,9 @@
     "icon": "./assets/favicon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/favicon.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#333"
     },
     "ios": {
       "supportsTablet": true
@@ -17,7 +17,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/favicon.png",
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "#333",
         "androidStatusBar": {
           "translucent": false
         }
