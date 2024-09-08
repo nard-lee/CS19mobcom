@@ -1,13 +1,23 @@
 
-import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, Image, Dimensions } from 'react-native'
+import React, { useContext } from 'react'
 import Feather from '@expo/vector-icons/Feather';
+import { ThemeContext } from '../../context/ThemeContext';
+
 
 const Home = () => {
+
+  const images = [
+    { id: 1, image: require('../../assets/hfood.jpeg') },
+    { id: 2, image: require('../../assets/hfood.jpeg') },
+    { id: 3, image: require('../../assets/hfood.jpeg') },
+  ];
+
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <View style={[styles.scene]}>
-      <Feather name="home" size={24} color="black" />
-      <Text style={{ fontSize: 10 }}>Home</Text>
+    <View style={[styles.scene, { backgroundColor: theme.colors.background }]}>
+
     </View>
   )
 }

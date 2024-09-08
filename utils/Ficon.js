@@ -1,18 +1,15 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React, { useContext } from 'react'
-import Feather from '@expo/vector-icons/Feather';
-import { ThemeContext } from '../context/ThemeContext';
-const Cicon = ({ name, size, color, title }) => {
+import React from 'react'
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
-	const { theme } = useContext(ThemeContext);
-
+const Ficon = ({ name, size, color, title }) => {
 	return (
 		<View style={styles.iconHolder}>
-			<Feather name={name} size={size} color={theme.colors.text} />
-			<Text style={{color: theme.textColor()}}>{title}</Text>
+			<FontAwesome5 name={name} size={size} color={color} />
+			<Text style={styles.lb}>{title}</Text>
 			{name == 'heart' && 
 				<View style={styles.notif}>
-					<Text style={{ fontSize: 10, zIndex: 1, color: "#fff" }}>3</Text>
+					<Text style={{ fontSize: 10, zIndex: 1, color: '#fff' }}>3</Text>
 				</View>
 			}
 		</View>
@@ -28,6 +25,7 @@ const styles = StyleSheet.create({
 	},
 	lb: {
 		fontSize: 9,
+		color: '#fff',
 		lineHeight: 10
 	},
 	notif: {
@@ -45,4 +43,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default Cicon
+export default Ficon

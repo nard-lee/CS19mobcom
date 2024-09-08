@@ -1,9 +1,13 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../../context/ThemeContext';
 
 const Like = () => {
+
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <View style={[styles.scene]}>
+    <View style={[styles.scene, { backgroundColor: theme.colors.background }]}>
       <Text>Like</Text>
     </View>
   )
