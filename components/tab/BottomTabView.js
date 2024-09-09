@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import Cicon from '../../utils/Cicon';
 import LandPage from '../LandPage';
-import { ThemeContext, ThemeProvider } from '../../context/ThemeContext';
+import { ThemeContext } from '../../context/ThemeContext';
 
 import Home from './Home';
 import Profile from './Profile';
@@ -19,7 +19,7 @@ const renderScene = SceneMap({
 
 export default function BottomTabView() {
 
-
+  const { height } = Dimensions.get('window');
   const [showLandingPage, setShowLandingPage] = useState(true);
 
   const handleCloseLandingPage = () => {
@@ -28,8 +28,8 @@ export default function BottomTabView() {
 
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    { key: 'home', title: <Cicon name="home" size={21} color="#fff" title="Home" /> },
-    { key: 'like', title: <Cicon name="heart" size={21} color="#fff" title="Like" /> },
+    { key: 'home', title: <Cicon name="home" size={21} color="#333" title="Home" /> },
+    { key: 'like', title: <Cicon name="heart" size={21} color="pink" title="Like" /> },
     { key: 'user', title: <Cicon name="user" size={21} color="#fff" title="User" /> },
   ]);
 
@@ -37,7 +37,7 @@ export default function BottomTabView() {
     const { theme } = useContext(ThemeContext);
 
     return (
-      <View style={[styles.tabBar, { backgroundColor: theme.colors.background }]}>
+      <View style={[styles.tabBar, { backgroundColor: theme.s_bg }]}>
         {props.navigationState.routes.map((route, i) => {
           return (
             <TouchableOpacity
@@ -55,7 +55,7 @@ export default function BottomTabView() {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, height: height }}>
 
       <LandPage
         visible={showLandingPage}
@@ -85,14 +85,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 50,
     alignItems: 'center',
-    backgroundColor: '#339933',
+    backgroundColor: '#fff',
     position: 'absolute',
     bottom: 0,
     zIndex: 1,
     width: '100%',
-    borderTopWidth: 0.5,
-    borderBlockColor: 'rgba(0, 0, 0, 0.5)',
-    borderStyle: 'dotted',
   },
   tabItem: {
     paddingTop: 8,
