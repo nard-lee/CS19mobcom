@@ -3,7 +3,7 @@ const lightTheme = {
     name: 'Light',
     p_bg: '#fff',
     s_bg: '#e6e6e6',
-    p_col: '#212529',
+    p_col: '#333',
 
     colors: {
       primary: '#fff', // Blue
@@ -11,7 +11,7 @@ const lightTheme = {
       background: '#fff', // White
       text: '#212529', // Dark Gray
     },
-    textColor(){
+    textCol(){
       return { color: this.colors.text }
     },
     bgColor(){
@@ -21,8 +21,8 @@ const lightTheme = {
   
   const darkTheme = {
     name: 'Dark',
-    p_bg: '#333',
-    s_bg: '#404040',
+    p_bg: '#24293E',
+    s_bg: '#1c2031',
     p_col: '#fff',
 
     colors: {

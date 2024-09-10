@@ -87,6 +87,7 @@ const Profile = () => {
             <Link
               to={{ screen: "Setting" }}
               style={[styles._link, { color: theme.p_col }]}
+              android_ripple={{ color: 'rgba(0, 0, 0, 0.5)' }}
             >
               Setting
             </Link>

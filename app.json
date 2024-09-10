@@ -2,7 +2,7 @@
   "expo": {
     "name": "cs19proj",
     "slug": "cs19proj",
-    "version": "1.0.0",
+    "version": "1.0.0", 
     "orientation": "default",
     "icon": "./assets/favicon.png",
     "userInterfaceStyle": "light",
@@ -26,6 +26,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a1685d14-b22f-48f2-95d1-e6eb16a63567"
+      }
     }
   }
 }

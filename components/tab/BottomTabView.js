@@ -15,8 +15,6 @@ const renderScene = SceneMap({
   user: Profile,
 });
 
-
-
 export default function BottomTabView() {
 
   const { height } = Dimensions.get('window');
@@ -28,9 +26,9 @@ export default function BottomTabView() {
 
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    { key: 'home', title: <Cicon name="home" size={21} color="#333" title="Home" /> },
+    { key: 'home', title: <Cicon name="home"  size={21} color="#333" title="Home" /> },
     { key: 'like', title: <Cicon name="heart" size={21} color="pink" title="Like" /> },
-    { key: 'user', title: <Cicon name="user" size={21} color="#fff" title="User" /> },
+    { key: 'user', title: <Cicon name="user"  size={21} color="#fff" title="User" /> },
   ]);
 
   const renderTabBar = (props) => {
@@ -94,6 +92,5 @@ const styles = StyleSheet.create({
   tabItem: {
     paddingTop: 8,
     paddingBottom: 5,
-
   }
 });
